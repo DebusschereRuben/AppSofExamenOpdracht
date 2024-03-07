@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppSofExamenOpdracht.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,14 +16,19 @@ using System.Windows.Shapes;
 
 namespace AppSofExamenOpdracht.Pages
 {
-    /// <summary>
-    /// Interaction logic for CocktailDetailsPage.xaml
-    /// </summary>
     public partial class CocktailDetailsPage : Page
     {
-        public CocktailDetailsPage()
+        Cocktail currentCocktail;
+        public CocktailDetailsPage(Cocktail cocktail)
         {
             InitializeComponent();
+            currentCocktail = cocktail;
+            loadDetails();
+        }
+
+        public void loadDetails()
+        {
+            lbl_name.Content = currentCocktail.Name;
         }
     }
 }

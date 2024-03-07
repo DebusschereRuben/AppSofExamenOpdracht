@@ -9,9 +9,12 @@ namespace AppSofExamenOpdracht.Pages
 {
     public partial class RandomPage : Page
     {
-        public RandomPage()
+        Cocktail currentCocktail;
+        private Frame _mainFrame;
+        public RandomPage(Frame mainFrame)
         {
             InitializeComponent();
+            _mainFrame = mainFrame;
         }
 
         private async void Btn_Random_Click(object sender, RoutedEventArgs e)
@@ -19,6 +22,7 @@ namespace AppSofExamenOpdracht.Pages
             using HttpClient client = new();
 
             var cocktail = await ProcessCocktailAsync(client);
+            currentCocktail = cocktail;
 
             loadCocktailsDetails(cocktail);
         }
@@ -40,9 +44,9 @@ namespace AppSofExamenOpdracht.Pages
             lbl_name.Content = cocktail.Name;
         }
 
-        private void btn_CocktailDetails_Click(object sender, RoutedEventArgs e)
+        private async void btn_CocktailDetails_Click(object sender, RoutedEventArgs e)
         {
-
+            _mainFrame.Navigate(new CocktailDetailsPage(currentCocktail));
         }
     }
 }

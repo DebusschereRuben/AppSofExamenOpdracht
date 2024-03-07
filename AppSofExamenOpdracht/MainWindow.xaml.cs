@@ -12,9 +12,6 @@ using AppSofExamenOpdracht.Pages;
 
 namespace AppSofExamenOpdracht
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -35,8 +32,7 @@ namespace AppSofExamenOpdracht
 
         private void Go_to_Random(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new RandomPage());
+            MainFrame.Navigate(new RandomPage(MainFrame));
         }
-
     }
 }

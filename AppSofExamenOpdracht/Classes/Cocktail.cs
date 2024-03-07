@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AppSofExamenOpdracht.Classes
 {
-    internal class Cocktail
+    public class Cocktail
     {
         [JsonPropertyName("strDrink")]
         public string? Name { get; set; }
