@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10">
+            <Button Content="Cocktails" Click="Go_to_Cocktails" Margin="5" Height="25" Width="200"/>
+            <Button Content="Meals" Click="Go_to_Meals" Margin="5" Height="25" Width="200"/>
+            <Button Content="Random" Click="Go_to_Random" Margin="5" Height="25" Width="200"/>
+        </StackPanel>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Margin="0,50,0,0"/>
     </Grid>
 </Window>
