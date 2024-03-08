@@ -18,17 +18,31 @@ namespace AppSofExamenOpdracht.Pages
 {
     public partial class CocktailDetailsPage : Page
     {
-        Cocktail currentCocktail;
+        Cocktail cocktail;
         public CocktailDetailsPage(Cocktail cocktail)
         {
             InitializeComponent();
-            currentCocktail = cocktail;
-            loadDetails();
+            this.cocktail = cocktail;
+            loadCocktailDetails();
         }
 
-        public void loadDetails()
+        public void loadCocktailDetails()
         {
-            lbl_name.Content = currentCocktail.Name;
+            lbl_name.Content = cocktail.Name;
+
+            Uri cocktailUri = new Uri(cocktail.Image);
+            img_cocktail.Source = new BitmapImage(cocktailUri);
+
+            lbl_categorie.Content = cocktail.Categorie;
+
+            txt_instructions.Text = cocktail.Instructions;
+
+            lst_ingredients.Items.Clear();
+            foreach (var ing in cocktail.ingredients)
+            {
+                lst_ingredients.Items.Add(ing);
+            }
+
         }
     }
 }

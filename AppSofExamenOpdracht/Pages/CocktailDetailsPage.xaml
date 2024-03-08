@@ -9,7 +9,7 @@
       Title="CocktailDetailsPage">
 
     <Grid Background="AliceBlue">
-        <Image HorizontalAlignment="Left" Height="150" Margin="30,30,0,0" VerticalAlignment="Top" Width="150"/>
+        <Image x:Name="img_cocktail" HorizontalAlignment="Left" Height="150" Margin="30,30,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Background="SkyBlue" x:Name="lbl_name" Content="" HorizontalAlignment="Left" Margin="200,31,0,0" VerticalAlignment="Top"/>
         <Label Background="SkyBlue" x:Name="lbl_categorie" Content="" HorizontalAlignment="Left" Margin="200,81,0,0" VerticalAlignment="Top"/>
         <TextBlock Background="SkyBlue" x:Name="txt_instructions" HorizontalAlignment="Left" Margin="200,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="224" Width="291"/>

@@ -11,25 +11,15 @@ namespace AppSofExamenOpdracht.Classes
     {
         [JsonPropertyName("strDrink")]
         public string? Name { get; set; }
-        [JsonPropertyName("strCategorie")]
+        [JsonPropertyName("strCategory")]
         public string? Categorie { get; set; }
         [JsonPropertyName("strInstructions")]
         public string? Instructions { get; set; }
 
-        public string? Ingredients;
+        public List<string> ingredients;
         public string? Measures;
 
         [JsonPropertyName("strDrinkThumb")]
-        public string? Image {  get; set; }
-
-        public void SetIngredients()
-        {
-
-        }
-
-        public void SetMeasures()
-        {
-
-        }
+        public string? Image {  get; set; }        
     }
 }
