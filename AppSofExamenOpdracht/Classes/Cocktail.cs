@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 
 namespace AppSofExamenOpdracht.Classes
 {
@@ -11,6 +6,8 @@ namespace AppSofExamenOpdracht.Classes
     {
         [JsonPropertyName("strDrink")]
         public string? Name { get; set; }
+        [JsonPropertyName("strAlcoholic")]
+        public string? Alcoholic { get; set; }
         [JsonPropertyName("strCategory")]
         public string? Categorie { get; set; }
         [JsonPropertyName("strInstructions")]

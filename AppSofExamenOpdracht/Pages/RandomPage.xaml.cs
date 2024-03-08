@@ -23,12 +23,9 @@ namespace AppSofExamenOpdracht.Pages
             using HttpClient client = new();
 
             var cocktail = await ProcessCocktailAsync(client);
-            var ingredients = await ProcessIngredientsAsync(client);
-            cocktail.ingredients = ingredients;
-
             currentCocktail = cocktail;
 
-            loadCocktailsDetails(cocktail);
+            loadCocktailPreview(cocktail);
         }
 
         private async Task<Cocktail> ProcessCocktailAsync(HttpClient client)
@@ -37,16 +34,13 @@ namespace AppSofExamenOpdracht.Pages
             var drinks = JsonSerializer.Deserialize<Drinks>(JSON);
             var cocktail = drinks.Cocktails[0];
 
-            return cocktail;
-        }
-        private async Task<List<string>> ProcessIngredientsAsync(HttpClient client)
-        {
-            var JSON = await client.GetStringAsync("https://www.thecocktaildb.com/api/json/v1/1/random.php");
-            var response = JsonSerializer.Deserialize<Dictionary<string, List<Dictionary<string, object>>>>(JSON);
-            var drinks = response["drinks"];
-            var cocktail = drinks[0];
+            //ingredients list
+            var dResponse = JsonSerializer.Deserialize<Dictionary<string, List<Dictionary<string, object>>>>(JSON);
+            var dDrinks = dResponse["drinks"];
+            var dCocktail =dDrinks[0];
+            cocktail.ingredients = getIngredients(dCocktail);
 
-            return getIngredients(cocktail);
+            return cocktail;
         }
         private List<string> getIngredients(Dictionary<string, object> d)
         {
@@ -72,8 +66,7 @@ namespace AppSofExamenOpdracht.Pages
             return ingredients;
         }
 
-
-        private async void loadCocktailsDetails(Cocktail cocktail)
+        private async void loadCocktailPreview(Cocktail cocktail)
         {
             Uri cocktailUri = new Uri(cocktail.Image);
             img_cocktail.Source = new BitmapImage(cocktailUri);
@@ -81,7 +74,7 @@ namespace AppSofExamenOpdracht.Pages
             lbl_name.Content = cocktail.Name;
         }
 
-        private async void btn_CocktailDetails_Click(object sender, RoutedEventArgs e)
+        private async void Go_to_CocktailDetails(object sender, RoutedEventArgs e)
         {
             _mainFrame.Navigate(new CocktailDetailsPage(currentCocktail));
         }

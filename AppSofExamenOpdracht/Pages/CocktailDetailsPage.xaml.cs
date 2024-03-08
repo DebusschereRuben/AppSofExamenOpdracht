@@ -28,13 +28,12 @@ namespace AppSofExamenOpdracht.Pages
 
         public void loadCocktailDetails()
         {
-            lbl_name.Content = cocktail.Name;
-
             Uri cocktailUri = new Uri(cocktail.Image);
             img_cocktail.Source = new BitmapImage(cocktailUri);
 
+            lbl_name.Content = cocktail.Name;
+            lbl_alcoholic.Content = cocktail.Alcoholic;
             lbl_categorie.Content = cocktail.Categorie;
-
             txt_instructions.Text = cocktail.Instructions;
 
             lst_ingredients.Items.Clear();
@@ -42,7 +41,6 @@ namespace AppSofExamenOpdracht.Pages
             {
                 lst_ingredients.Items.Add(ing);
             }
-
         }
     }
 }
