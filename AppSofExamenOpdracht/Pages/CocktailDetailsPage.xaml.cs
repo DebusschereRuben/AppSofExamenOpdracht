@@ -33,7 +33,9 @@ namespace AppSofExamenOpdracht.Pages
 
             lbl_name.Content = cocktail.Name;
             lbl_alcoholic.Content = cocktail.Alcoholic;
-            lbl_categorie.Content = cocktail.Categorie;
+            lbl_categorie.Content += cocktail.Categorie;
+            lbl_glass.Content += cocktail.Glass;
+
             txt_instructions.Text = cocktail.Instructions;
 
             lst_ingredients.Items.Clear();

@@ -12,9 +12,10 @@ namespace AppSofExamenOpdracht.Classes
         public string? Categorie { get; set; }
         [JsonPropertyName("strInstructions")]
         public string? Instructions { get; set; }
+        [JsonPropertyName("strGlass")]
+        public string? Glass { get; set; }
 
         public List<string> ingredients;
-        public string? Measures;
 
         [JsonPropertyName("strDrinkThumb")]
         public string? Image {  get; set; }        

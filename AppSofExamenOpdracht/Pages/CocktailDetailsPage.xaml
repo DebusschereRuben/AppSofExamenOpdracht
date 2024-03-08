@@ -15,5 +15,6 @@
         <Label Background="SkyBlue" x:Name="lbl_categorie" Content="Category: " HorizontalAlignment="Left" Margin="200,81,0,0" VerticalAlignment="Top"/>
         <TextBlock Background="SkyBlue" x:Name="txt_instructions" HorizontalAlignment="Left" Margin="200,136,0,0" TextWrapping="Wrap" MaxWidth="300" VerticalAlignment="Top" Padding="5"/>
         <ListBox Background="SkyBlue" x:Name="lst_ingredients" Margin="515,44,33,37"/>
+        <Label Background="SkyBlue" x:Name="lbl_glass" Content="Glass: " HorizontalAlignment="Left" Margin="30,249,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>
