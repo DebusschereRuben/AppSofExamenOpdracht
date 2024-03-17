@@ -3,7 +3,6 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Media.Imaging;
 
 namespace AppSofExamenOpdracht.Pages
@@ -36,13 +35,14 @@ namespace AppSofExamenOpdracht.Pages
         {
             var JSON = await client.GetStringAsync("https://www.thecocktaildb.com/api/json/v1/1/random.php");
             var drinks = JsonSerializer.Deserialize<Drinks>(JSON);
-            var cocktail = drinks.Cocktails[0];
+            var cocktail = drinks.DrinksList[0];
 
             //ingredients list
+            int ingredientsAmount = 15;
             var dResponse = JsonSerializer.Deserialize<Dictionary<string, List<Dictionary<string, object>>>>(JSON);
             var dDrinks = dResponse["drinks"];
-            var dCocktail =dDrinks[0];
-            cocktail.ingredients = getIngredients(dCocktail);
+            var dCocktail = dDrinks[0];
+            cocktail.ingredients = getIngredients(dCocktail, ingredientsAmount);
 
             return cocktail;
         }
@@ -51,18 +51,22 @@ namespace AppSofExamenOpdracht.Pages
         {
             var JSON = await client.GetStringAsync("https://www.themealdb.com/api/json/v1/1/random.php");
             var meals = JsonSerializer.Deserialize<Meals>(JSON);
-            var meal = meals.Meals[0];
+            var meal = meals.MealsList[0];
 
             // Ingredients list
-            meal.Ingredients = GetIngredients(meal);
+            int ingredientsAmount = 20;
+            var dResponse = JsonSerializer.Deserialize<Dictionary<string, List<Dictionary<string, object>>>>(JSON);
+            var dMeals = dResponse["meals"];
+            var dMeal = dMeals[0];
+            meal.ingredients = getIngredients(dMeal, ingredientsAmount);
 
             return meal;
         }
-        private List<string> getIngredients(Dictionary<string, object> d)
+        private List<string> getIngredients(Dictionary<string, object> d, int amount)
         {
             List<string> ingredients = new List<string>();
 
-            for (int i = 1; i <= 15; i++)
+            for (int i = 1; i <= amount; i++)
             {
                 string ingredientKey = "strIngredient" + i;
                 string measureKey = "strMeasure" + i;
@@ -81,29 +85,29 @@ namespace AppSofExamenOpdracht.Pages
             }
             return ingredients;
         }
-        private List<string> GetIngredients(Meal meal)
-        {
-            List<string> ingredients = new List<string>();
+        //private List<string> GetIngredients(Meal meal)
+        //{
+        //    List<string> ingredients = new List<string>();
 
-            for (int i = 1; i <= 20; i++)
-            {
-                string ingredientKey = "strIngredient" + i;
-                string measureKey = "strMeasure" + i;
+        //    for (int i = 1; i <= 20; i++)
+        //    {
+        //        string ingredientKey = "strIngredient" + i;
+        //        string measureKey = "strMeasure" + i;
 
-                string? ingredient = Convert.ToString(meal.ContainsKey(ingredientKey) ? meal[ingredientKey] : null);
-                string? measure = Convert.ToString(meal.ContainsKey(measureKey) ? meal[measureKey] : null);
+        //        string? ingredient = Convert.ToString(meal.ContainsKey(ingredientKey) ? meal[ingredientKey] : null);
+        //        string? measure = Convert.ToString(meal.ContainsKey(measureKey) ? meal[measureKey] : null);
 
-                if (ingredient != null && measure != null && ingredient != "")
-                {
-                    ingredients.Add($"{measure} {ingredient}");
-                }
-                else
-                {
-                    break; // Early exit
-                }
-            }
-            return ingredients;
-        }
+        //        if (ingredient != null && measure != null && ingredient != "")
+        //        {
+        //            ingredients.Add($"{measure} {ingredient}");
+        //        }
+        //        else
+        //        {
+        //            break; // Early exit
+        //        }
+        //    }
+        //    return ingredients;
+        //}
 
         private async void loadCocktailPreview(Cocktail cocktail)
         {

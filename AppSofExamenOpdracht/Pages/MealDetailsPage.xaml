@@ -1,0 +1,19 @@
+﻿<Page x:Class="AppSofExamenOpdracht.Pages.MealDetailsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppSofExamenOpdracht.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MealDetailsPage">
+
+    <Grid Background="PaleGreen">
+        <Image x:Name="img_meal" HorizontalAlignment="Left" Height="150" Margin="30,30,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Background="MediumSeaGreen" x:Name="lbl_name" Content="" HorizontalAlignment="Left" Margin="30,200,0,0" VerticalAlignment="Top"/>
+        <Label Background="MediumSeaGreen" x:Name="lbl_categorie" Content="Category: " HorizontalAlignment="Left" Margin="200,81,0,0" VerticalAlignment="Top"/>
+        <TextBlock Background="MediumSeaGreen" x:Name="txt_instructions" HorizontalAlignment="Left" Margin="200,136,0,0" TextWrapping="Wrap" MaxWidth="300" VerticalAlignment="Top" Padding="5"/>
+        <ListBox Background="MediumSeaGreen" x:Name="lst_ingredients" Margin="515,44,33,37"/>
+        <Label Background="MediumSeaGreen" x:Name="lbl_country" Content="Country: " HorizontalAlignment="Left" Margin="30,249,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Page>

@@ -5,6 +5,6 @@ namespace AppSofExamenOpdracht.Classes
     internal class Drinks
     {
         [JsonPropertyName("drinks")]
-        public IList<Cocktail> Cocktails { get; set; } = new List<Cocktail>();
+        public IList<Cocktail> DrinksList { get; set; } = new List<Cocktail>();
     }
 }
