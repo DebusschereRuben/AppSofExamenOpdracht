@@ -9,11 +9,19 @@
       Title="MealDetailsPage">
 
     <Grid Background="PaleGreen">
-        <Image x:Name="img_meal" HorizontalAlignment="Left" Height="150" Margin="30,30,0,0" VerticalAlignment="Top" Width="150"/>
-        <Label Background="MediumSeaGreen" x:Name="lbl_name" Content="" HorizontalAlignment="Left" Margin="30,200,0,0" VerticalAlignment="Top"/>
-        <Label Background="MediumSeaGreen" x:Name="lbl_categorie" Content="Category: " HorizontalAlignment="Left" Margin="200,81,0,0" VerticalAlignment="Top"/>
-        <TextBlock Background="MediumSeaGreen" x:Name="txt_instructions" HorizontalAlignment="Left" Margin="200,136,0,0" TextWrapping="Wrap" MaxWidth="300" VerticalAlignment="Top" Padding="5"/>
-        <ListBox Background="MediumSeaGreen" x:Name="lst_ingredients" Margin="515,44,33,37"/>
-        <Label Background="MediumSeaGreen" x:Name="lbl_country" Content="Country: " HorizontalAlignment="Left" Margin="30,249,0,0" VerticalAlignment="Top"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="210"/>
+            <ColumnDefinition Width="*" MinWidth="200"/>
+            <ColumnDefinition Width="210"/>
+        </Grid.ColumnDefinitions>
+
+        <Image x:Name="img_meal" Grid.Column="0" HorizontalAlignment="Left" Height="150" Margin="30,30,0,0" VerticalAlignment="Top" Width="150"/>
+        <TextBlock x:Name="txt_name" Grid.Column="0" HorizontalAlignment="Left" Margin="30,210,0,0" VerticalAlignment="Top" TextWrapping="Wrap" MaxWidth="150" Padding="5" Background="MediumSeaGreen"/>
+        <Label x:Name="lbl_country" Grid.Column="0" Content="Country: " HorizontalAlignment="Left" Margin="30,270,0,0" VerticalAlignment="Top" Padding="5" Background="MediumSeaGreen"/>
+        
+        <Label x:Name="lbl_categorie" Grid.Column="1" Content="Category: " HorizontalAlignment="Left" Margin="0,30,30,0" VerticalAlignment="Top" Background="MediumSeaGreen"/>
+        <TextBlock x:Name="txt_instructions" Grid.Column="1" HorizontalAlignment="Left" Margin="0,90,0,30" VerticalAlignment="Top" TextWrapping="Wrap" Padding="5" Background="MediumSeaGreen"/>
+        
+        <ListBox x:Name="lst_ingredients" Grid.Column="2" Margin="30,30,30,30" Background="MediumSeaGreen"/>
     </Grid>
 </Page>

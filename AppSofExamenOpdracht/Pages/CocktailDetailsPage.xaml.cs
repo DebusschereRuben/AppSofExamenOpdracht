@@ -31,7 +31,7 @@ namespace AppSofExamenOpdracht.Pages
             Uri cocktailUri = new Uri(cocktail.Image);
             img_cocktail.Source = new BitmapImage(cocktailUri);
 
-            lbl_name.Content = cocktail.Name;
+            txt_name.Text = cocktail.Name;
             lbl_alcoholic.Content = cocktail.Alcoholic;
             lbl_categorie.Content += cocktail.Categorie;
             lbl_glass.Content += cocktail.Glass;

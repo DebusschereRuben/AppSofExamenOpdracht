@@ -16,9 +16,10 @@ namespace AppSofExamenOpdracht.Pages
         {
             InitializeComponent();
             _mainFrame = mainFrame;
+            generateRandomDrinkAndMeal();
         }
 
-        private async void Btn_Random_Click(object sender, RoutedEventArgs e)
+        private async void generateRandomDrinkAndMeal()
         {
             using HttpClient client = new();
 
@@ -29,6 +30,11 @@ namespace AppSofExamenOpdracht.Pages
 
             LoadMealPreview(meal);
             loadCocktailPreview(cocktail);
+        }
+
+        private void Btn_Random_Click(object sender, RoutedEventArgs e)
+        {
+            generateRandomDrinkAndMeal();
         }
 
         private async Task<Cocktail> ProcessCocktailAsync(HttpClient client)
@@ -85,36 +91,13 @@ namespace AppSofExamenOpdracht.Pages
             }
             return ingredients;
         }
-        //private List<string> GetIngredients(Meal meal)
-        //{
-        //    List<string> ingredients = new List<string>();
-
-        //    for (int i = 1; i <= 20; i++)
-        //    {
-        //        string ingredientKey = "strIngredient" + i;
-        //        string measureKey = "strMeasure" + i;
-
-        //        string? ingredient = Convert.ToString(meal.ContainsKey(ingredientKey) ? meal[ingredientKey] : null);
-        //        string? measure = Convert.ToString(meal.ContainsKey(measureKey) ? meal[measureKey] : null);
-
-        //        if (ingredient != null && measure != null && ingredient != "")
-        //        {
-        //            ingredients.Add($"{measure} {ingredient}");
-        //        }
-        //        else
-        //        {
-        //            break; // Early exit
-        //        }
-        //    }
-        //    return ingredients;
-        //}
 
         private async void loadCocktailPreview(Cocktail cocktail)
         {
             Uri cocktailUri = new Uri(cocktail.Image);
             img_cocktail.Source = new BitmapImage(cocktailUri);
 
-            lbl_nameCocktail.Content = cocktail.Name;
+            txt_nameCocktail.Text = cocktail.Name;
         }
 
         private async void LoadMealPreview(Meal meal)
@@ -122,17 +105,23 @@ namespace AppSofExamenOpdracht.Pages
             Uri mealUri = new Uri(meal.Image);
             img_meal.Source = new BitmapImage(mealUri);
 
-            lbl_nameMeal.Content = meal.Name;
+            txt_nameMeal.Text = meal.Name;
         }
 
         private async void Go_to_CocktailDetails(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new CocktailDetailsPage(currentCocktail));
+            if (currentCocktail != null) 
+            {
+                _mainFrame.Navigate(new CocktailDetailsPage(currentCocktail));
+            }
         }
 
         private async void Go_to_MealDetails(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new MealDetailsPage(currentMeal));
+            if(currentMeal != null)
+            {
+                _mainFrame.Navigate(new MealDetailsPage(currentMeal));
+            }
         }
     }
 }

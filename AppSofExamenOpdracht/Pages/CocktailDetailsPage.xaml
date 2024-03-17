@@ -9,12 +9,20 @@
       Title="CocktailDetailsPage">
 
     <Grid Background="AliceBlue">
-        <Image x:Name="img_cocktail" HorizontalAlignment="Left" Height="150" Margin="30,30,0,0" VerticalAlignment="Top" Width="150"/>
-        <Label Background="SkyBlue" x:Name="lbl_name" Content="" HorizontalAlignment="Left" Margin="30,200,0,0" VerticalAlignment="Top"/>
-        <Label Background="SkyBlue" x:Name="lbl_alcoholic" Content="" HorizontalAlignment="Left" Margin="200,31,0,0" VerticalAlignment="Top"/>
-        <Label Background="SkyBlue" x:Name="lbl_categorie" Content="Category: " HorizontalAlignment="Left" Margin="200,81,0,0" VerticalAlignment="Top"/>
-        <TextBlock Background="SkyBlue" x:Name="txt_instructions" HorizontalAlignment="Left" Margin="200,136,0,0" TextWrapping="Wrap" MaxWidth="300" VerticalAlignment="Top" Padding="5"/>
-        <ListBox Background="SkyBlue" x:Name="lst_ingredients" Margin="515,44,33,37"/>
-        <Label Background="SkyBlue" x:Name="lbl_glass" Content="Glass: " HorizontalAlignment="Left" Margin="30,249,0,0" VerticalAlignment="Top"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="210"/>
+            <ColumnDefinition Width="*" MinWidth="200"/>
+            <ColumnDefinition Width="210"/>
+        </Grid.ColumnDefinitions>
+
+        <Image x:Name="img_cocktail" Grid.Column="0" HorizontalAlignment="Left" Height="150" Margin="30,30,30,30" VerticalAlignment="Top" Width="150"/>
+        <TextBlock x:Name="txt_name" Grid.Column="0" HorizontalAlignment="Left" Margin="30,210,30,30" VerticalAlignment="Top" Background="SkyBlue" Padding="5"/>
+        <Label x:Name="lbl_glass" Grid.Column="0"  Content="Glass: " HorizontalAlignment="Left" Margin="30,270,30,30" VerticalAlignment="Top" Background="SkyBlue"/>
+
+        <Label x:Name="lbl_alcoholic" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="0,30,0,0" VerticalAlignment="Top" Background="SkyBlue"/>
+        <Label x:Name="lbl_categorie" Grid.Column="1" Content="Category: " HorizontalAlignment="Left" Margin="0,90,0,0" VerticalAlignment="Top" Background="SkyBlue"/>
+        <TextBlock x:Name="txt_instructions" Grid.Column="1" HorizontalAlignment="Left" Margin="0,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Padding="5" Background="SkyBlue"/>
+
+        <ListBox x:Name="lst_ingredients" Grid.Column="2" Margin="30,30,30,30" Background="SkyBlue"/>
     </Grid>
 </Page>

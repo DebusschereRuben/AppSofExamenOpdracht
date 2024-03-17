@@ -22,7 +22,7 @@ namespace AppSofExamenOpdracht.Pages
             Uri mealUri = new Uri(meal.Image);
             img_meal.Source = new BitmapImage(mealUri);
 
-            lbl_name.Content = meal.Name;
+            txt_name.Text = meal.Name;
             lbl_categorie.Content += meal.Categorie;
             lbl_country.Content += meal.Country;
 
