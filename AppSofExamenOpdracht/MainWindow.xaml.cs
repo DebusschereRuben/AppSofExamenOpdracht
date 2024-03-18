@@ -8,17 +8,17 @@ namespace AppSofExamenOpdracht
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new CocktailsPage());
+            MainFrame.Navigate(new CocktailsPage(MainFrame));
         }
 
         private void Go_to_Cocktails(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new CocktailsPage());
+            MainFrame.Navigate(new CocktailsPage(MainFrame));
         }
 
         private void Go_to_Meals(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate (new MealsPage());
+            MainFrame.Navigate (new MealsPage(MainFrame));
         }
 
         private void Go_to_Random(object sender, RoutedEventArgs e)

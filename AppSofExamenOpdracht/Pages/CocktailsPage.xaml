@@ -7,8 +7,20 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CocktailsPage">
+    <Page.Resources>
+        <DataTemplate x:Key="CocktailTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding Image}" Width="50" Height="50" Margin="5"/>
+                <TextBlock Text="{Binding Name}" Margin="5"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
 
-    <Grid>
-        <Label>cock</Label>
+    <Grid Background="white">
+        <TextBox x:Name="txt_input" HorizontalAlignment="Left" Margin="116,69,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="398" Height="21"/>
+        <Button x:Name="btn_search" Content="Search" HorizontalAlignment="Left" Margin="550,58,0,0" VerticalAlignment="Top" Height="22" Width="119" Click="btn_search_Click"/>
+        <ListBox x:Name="lst_drinkList" Margin="45,125,231,207" ItemTemplate="{StaticResource CocktailTemplate}"/>
+        <Button x:Name="btn_details" Content="Deatils" HorizontalAlignment="Left" Margin="600,125,0,0" VerticalAlignment="Top" Height="279" Width="119" Click="btn_details_Click"/>
+        <Label x:Name="lbl_output" Content="Label" HorizontalAlignment="Left" Margin="230,299,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>
