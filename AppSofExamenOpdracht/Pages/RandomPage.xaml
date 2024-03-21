@@ -8,39 +8,27 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RandomPage">
 
-    <Grid Background="SlateBlue">
+    <Grid Background="LightSkyBlue">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="*" MinWidth="200"/>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Image x:Name="img_cocktail" Grid.Column="0" HorizontalAlignment="Left" Height="200" Width="200" Margin="50,50,50,50" VerticalAlignment="Top"/>
-        <TextBlock x:Name="txt_nameCocktail" Grid.Column="0" HorizontalAlignment="Left" Margin="50,275,0,0" VerticalAlignment="Top" TextWrapping="Wrap" MaxWidth="200" Padding="5" Background="SkyBlue"/>
-        <Button x:Name="btn_CocktailDetails" Grid.Column="0" Content="Go to Cocktail" HorizontalAlignment="Left" Margin="50,350,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="SkyBlue" Click="Go_to_CocktailDetails">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="15"/>
-                </Style>
-            </Button.Resources>
-        </Button>
+        <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image x:Name="img_cocktail" Height="200" Width="200" Margin="10"/>
+            <TextBlock x:Name="txt_nameCocktail" Text="Cocktail Name" TextAlignment="Center" Margin="10" Padding="5" Background="Pink"/>
+            <Button x:Name="btn_CocktailDetails" Content="Go to Cocktail" Margin="10" Padding="5" Background="Pink" Click="Go_to_CocktailDetails"/>
+        </StackPanel>
 
-        <Button x:Name="btn_Random" Grid.Column="1" Content="Random" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,200,0,0" Height="50" Width="200" Click="Btn_Random_Click" Background="DarkSlateBlue" Foreground="White">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="15"/>
-                </Style>
-            </Button.Resources>
-        </Button>
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="btn_Random" Content="Random" Margin="10" Padding="5" Background="DarkSlateBlue" Foreground="White" Click="Btn_Random_Click"/>
+        </StackPanel>
 
-        <Image x:Name="img_meal" Grid.Column="2" HorizontalAlignment="Left" Height="200" Margin="50,50,50,50" VerticalAlignment="Top" Width="200"/>
-        <TextBlock x:Name="txt_nameMeal" Grid.Column="2" HorizontalAlignment="Left" Margin="50,275,0,0" VerticalAlignment="Top" TextWrapping="Wrap" MaxWidth="200" Padding="5" Background="MediumSeaGreen"/>
-        <Button x:Name="btn_MealDetails" Grid.Column="2" Content="Go to Meal" HorizontalAlignment="Left" Margin="50,350,0,0" VerticalAlignment="Top" Height="50" Width="200" Background="MediumSeaGreen" Click="Go_to_MealDetails">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="15"/>
-                </Style>
-            </Button.Resources>
-        </Button>
+        <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image x:Name="img_meal" Height="200" Width="200" Margin="10"/>
+            <TextBlock x:Name="txt_nameMeal" Text="Meal Name" TextAlignment="Center" Margin="10" Padding="5" Background="Lavender"/>
+            <Button x:Name="btn_MealDetails" Content="Go to Meal" Margin="10" Padding="5" Background="Lavender" Click="Go_to_MealDetails"/>
+        </StackPanel>
     </Grid>
 </Page>
