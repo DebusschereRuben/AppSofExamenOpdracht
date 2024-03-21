@@ -19,10 +19,29 @@ namespace AppSofExamenOpdracht.Pages
     public partial class CocktailDetailsPage : Page
     {
         Cocktail cocktail;
-        public CocktailDetailsPage(Cocktail cocktail)
+        Frame _mainFrame;
+        RandomPage _randomPage;
+        CocktailsPage _cocktailsPage;
+        public CocktailDetailsPage(Cocktail cocktail)//basic opstarten 1e keer
         {
             InitializeComponent();
             this.cocktail = cocktail;
+            loadCocktailDetails();
+        }
+        public CocktailDetailsPage(Cocktail cocktail, Frame mainFrame, RandomPage rp)//om terug te kunnen keren naar randompage met behoud van data
+        {
+            InitializeComponent();
+            this.cocktail = cocktail;
+            _mainFrame = mainFrame;
+            _randomPage = rp;
+            loadCocktailDetails();
+        }
+        public CocktailDetailsPage(Cocktail cocktail, Frame mainFrame, CocktailsPage cp)//om terug te kunnen keren naar searchpage met behoud van data
+        {
+            InitializeComponent();
+            this.cocktail = cocktail;
+            _mainFrame = mainFrame;
+            _cocktailsPage = cp;
             loadCocktailDetails();
         }
 
@@ -42,6 +61,17 @@ namespace AppSofExamenOpdracht.Pages
             foreach (var ing in cocktail.ingredients)
             {
                 lst_ingredients.Items.Add(ing);
+            }
+        }
+
+        private async void btn_ReturnToRandom(object sender, RoutedEventArgs e)
+        {
+            if(_randomPage != null)
+            {
+                _mainFrame.Navigate(_randomPage);
+            }else if(_cocktailsPage != null)
+            {
+                _mainFrame.Navigate(_cocktailsPage);
             }
         }
     }

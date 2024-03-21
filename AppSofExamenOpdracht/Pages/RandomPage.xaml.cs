@@ -19,6 +19,15 @@ namespace AppSofExamenOpdracht.Pages
             generateRandomDrinkAndMeal();
         }
 
+        //public RandomPage(Cocktail c, Meal m)
+        //{
+        //    InitializeComponent();
+        //    currentCocktail = c;
+        //    currentMeal = m;
+        //    loadCocktailPreview(c);
+        //    LoadMealPreview(m);
+        //}
+
         private async void generateRandomDrinkAndMeal()
         {
             using HttpClient client = new();
@@ -112,7 +121,7 @@ namespace AppSofExamenOpdracht.Pages
         {
             if (currentCocktail != null) 
             {
-                _mainFrame.Navigate(new CocktailDetailsPage(currentCocktail));
+                _mainFrame.Navigate(new CocktailDetailsPage(currentCocktail, _mainFrame, this));
             }
         }
 
@@ -120,7 +129,7 @@ namespace AppSofExamenOpdracht.Pages
         {
             if(currentMeal != null)
             {
-                _mainFrame.Navigate(new MealDetailsPage(currentMeal));
+                _mainFrame.Navigate(new MealDetailsPage(currentMeal, _mainFrame, this));
             }
         }
     }

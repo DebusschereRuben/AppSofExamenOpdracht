@@ -79,7 +79,7 @@ namespace AppSofExamenOpdracht.Pages
                 var dMeal = dMeals[0];
                 meal.ingredients = getIngredients(dMeal, 20);
 
-                _mainFrame.Navigate(new MealDetailsPage(meal));
+                _mainFrame.Navigate(new MealDetailsPage(meal, _mainFrame, this));//mainframe voor navigatie, this is state vd pagina
             }
             catch (Exception ex)
             {

@@ -89,11 +89,11 @@ namespace AppSofExamenOpdracht.Pages
                 var dCocktail = dDrinks[0];
                 cocktail.ingredients = getIngredients(dCocktail, 15);
 
-                _mainFrame.Navigate(new CocktailDetailsPage(cocktail));
+                _mainFrame.Navigate(new CocktailDetailsPage(cocktail, _mainFrame, this));
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Geen cocktail geselcteerd");
+                MessageBox.Show("Geen cocktail geselecteerd");
             } 
         }
     }

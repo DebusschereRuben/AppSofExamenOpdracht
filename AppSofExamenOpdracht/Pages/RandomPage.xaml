@@ -12,23 +12,23 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" MinWidth="200"/>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" MinWidth="200"/>
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Image x:Name="img_cocktail" Height="200" Width="200" Margin="10"/>
-            <TextBlock x:Name="txt_nameCocktail" Text="Cocktail Name" TextAlignment="Center" Margin="10" Padding="5" Background="Pink"/>
-            <Button x:Name="btn_CocktailDetails" Content="Go to Cocktail" Margin="10" Padding="5" Background="Pink" Click="Go_to_CocktailDetails"/>
+            <TextBlock x:Name="txt_nameCocktail" Width="200" TextWrapping="Wrap" Text="Cocktail Name" TextAlignment="Center" Margin="10" Padding="5" Background="Pink"/>
+            <Button x:Name="btn_CocktailDetails" Width="200" Content="Go to Cocktail" Margin="10" Padding="5" Background="Pink" Click="Go_to_CocktailDetails"/>
         </StackPanel>
 
         <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="btn_Random" Content="Random" Margin="10" Padding="5" Background="DarkSlateBlue" Foreground="White" Click="Btn_Random_Click"/>
+            <Button x:Name="btn_Random" Content="Random" Margin="10" Padding="20" Background="DarkSlateBlue" Foreground="White" Click="Btn_Random_Click"/>
         </StackPanel>
 
         <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Image x:Name="img_meal" Height="200" Width="200" Margin="10"/>
-            <TextBlock x:Name="txt_nameMeal" Text="Meal Name" TextAlignment="Center" Margin="10" Padding="5" Background="Lavender"/>
-            <Button x:Name="btn_MealDetails" Content="Go to Meal" Margin="10" Padding="5" Background="Lavender" Click="Go_to_MealDetails"/>
+            <TextBlock x:Name="txt_nameMeal" Width="200" TextWrapping="Wrap" Text="Meal Name" TextAlignment="Center" Margin="10" Padding="5" Background="Lavender"/>
+            <Button x:Name="btn_MealDetails" Width="200" Content="Go to Meal" Margin="10" Padding="5" Background="Lavender" Click="Go_to_MealDetails"/>
         </StackPanel>
     </Grid>
 </Page>
