@@ -18,16 +18,6 @@ namespace AppSofExamenOpdracht.Pages
             _mainFrame = mainFrame;
             generateRandomDrinkAndMeal();
         }
-
-        //public RandomPage(Cocktail c, Meal m)
-        //{
-        //    InitializeComponent();
-        //    currentCocktail = c;
-        //    currentMeal = m;
-        //    loadCocktailPreview(c);
-        //    LoadMealPreview(m);
-        //}
-
         private async void generateRandomDrinkAndMeal()
         {
             using HttpClient client = new();
@@ -101,7 +91,7 @@ namespace AppSofExamenOpdracht.Pages
             return ingredients;
         }
 
-        private async void loadCocktailPreview(Cocktail cocktail)
+        private void loadCocktailPreview(Cocktail cocktail)
         {
             Uri cocktailUri = new Uri(cocktail.Image);
             img_cocktail.Source = new BitmapImage(cocktailUri);
@@ -109,7 +99,7 @@ namespace AppSofExamenOpdracht.Pages
             txt_nameCocktail.Text = cocktail.Name;
         }
 
-        private async void LoadMealPreview(Meal meal)
+        private void LoadMealPreview(Meal meal)
         {
             Uri mealUri = new Uri(meal.Image);
             img_meal.Source = new BitmapImage(mealUri);
@@ -117,7 +107,7 @@ namespace AppSofExamenOpdracht.Pages
             txt_nameMeal.Text = meal.Name;
         }
 
-        private async void Go_to_CocktailDetails(object sender, RoutedEventArgs e)
+        private void Go_to_CocktailDetails(object sender, RoutedEventArgs e)
         {
             if (currentCocktail != null) 
             {
@@ -125,7 +115,7 @@ namespace AppSofExamenOpdracht.Pages
             }
         }
 
-        private async void Go_to_MealDetails(object sender, RoutedEventArgs e)
+        private void Go_to_MealDetails(object sender, RoutedEventArgs e)
         {
             if(currentMeal != null)
             {

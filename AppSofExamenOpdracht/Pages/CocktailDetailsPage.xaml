@@ -19,7 +19,7 @@
             <Image x:Name="img_cocktail" Height="150" Width="150" Margin="10"/>
             <TextBlock x:Name="txt_name" Text="Cocktail Name" TextWrapping="Wrap" TextAlignment="Center" Margin="10" Padding="5" Background="Pink"/>
             <Label x:Name="lbl_glass" Content="Glass: " HorizontalContentAlignment="Center" Margin="10" Padding="5" Background="Pink"/>
-            <Button x:Name="btn_return" Content="Return" HorizontalAlignment="Left" Margin="10" Width="150" Height="30" Click="btn_ReturnToRandom" Background="DarkSlateBlue"/>
+            <Button x:Name="btn_return" Content="Return" HorizontalAlignment="Left" Margin="10" Width="150" Height="30" Click="btn_Return" Background="DarkSlateBlue" Foreground="white"/>
         </StackPanel>
 
         <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">

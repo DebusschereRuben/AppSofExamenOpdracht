@@ -18,61 +18,41 @@ namespace AppSofExamenOpdracht.Pages
 {
     public partial class CocktailDetailsPage : Page
     {
-        Cocktail cocktail;
+        Cocktail _cocktail;
         Frame _mainFrame;
-        RandomPage _randomPage;
-        CocktailsPage _cocktailsPage;
-        public CocktailDetailsPage(Cocktail cocktail)//basic opstarten 1e keer
+        Page _previousPage;
+        
+        public CocktailDetailsPage(Cocktail c, Frame mainFrame, Page p)//om terug te kunnen keren naar vorige pagina met behoud van data
         {
             InitializeComponent();
-            this.cocktail = cocktail;
-            loadCocktailDetails();
-        }
-        public CocktailDetailsPage(Cocktail cocktail, Frame mainFrame, RandomPage rp)//om terug te kunnen keren naar randompage met behoud van data
-        {
-            InitializeComponent();
-            this.cocktail = cocktail;
             _mainFrame = mainFrame;
-            _randomPage = rp;
-            loadCocktailDetails();
-        }
-        public CocktailDetailsPage(Cocktail cocktail, Frame mainFrame, CocktailsPage cp)//om terug te kunnen keren naar searchpage met behoud van data
-        {
-            InitializeComponent();
-            this.cocktail = cocktail;
-            _mainFrame = mainFrame;
-            _cocktailsPage = cp;
+            _cocktail = c;
+            _previousPage = p;
             loadCocktailDetails();
         }
 
         public void loadCocktailDetails()
         {
-            Uri cocktailUri = new Uri(cocktail.Image);
+            Uri cocktailUri = new(_cocktail.Image);
             img_cocktail.Source = new BitmapImage(cocktailUri);
 
-            txt_name.Text = cocktail.Name;
-            lbl_alcoholic.Content = cocktail.Alcoholic;
-            lbl_categorie.Content += cocktail.Categorie;
-            lbl_glass.Content += cocktail.Glass;
+            txt_name.Text = _cocktail.Name;
+            lbl_alcoholic.Content = _cocktail.Alcoholic;
+            lbl_categorie.Content += _cocktail.Categorie;
+            lbl_glass.Content += _cocktail.Glass;
 
-            txt_instructions.Text = cocktail.Instructions;
+            txt_instructions.Text = _cocktail.Instructions;
 
             lst_ingredients.Items.Clear();
-            foreach (var ing in cocktail.ingredients)
+            foreach (var ing in _cocktail.ingredients)
             {
                 lst_ingredients.Items.Add(ing);
             }
         }
 
-        private async void btn_ReturnToRandom(object sender, RoutedEventArgs e)
+        private void btn_Return(object sender, RoutedEventArgs e)
         {
-            if(_randomPage != null)
-            {
-                _mainFrame.Navigate(_randomPage);
-            }else if(_cocktailsPage != null)
-            {
-                _mainFrame.Navigate(_cocktailsPage);
-            }
+            _mainFrame.Navigate(_previousPage);
         }
     }
 }

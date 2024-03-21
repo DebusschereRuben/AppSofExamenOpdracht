@@ -5,39 +5,20 @@ using System.Windows.Media.Imaging;
 
 namespace AppSofExamenOpdracht.Pages
 {
-    /// <summary>
-    /// Interaction logic for MealDetailsPage.xaml
-    /// </summary>
     public partial class MealDetailsPage : Page
     {
         Meal meal;
         Frame _mainFrame;
-        RandomPage _randomPage;
-        MealsPage _mealsPage;
-        public MealDetailsPage(Meal meal, Frame mainFrame, RandomPage rp)
+        Page _previousPage;
+        public MealDetailsPage(Meal meal, Frame mainFrame, Page p)
         {
             InitializeComponent();
             this.meal = meal;
             _mainFrame = mainFrame;
-            _randomPage = rp;
+            _previousPage = p;
             loadMealDetails();
         }
-        public MealDetailsPage(Meal meal, Frame mainFrame, MealsPage mp)
-        {
-            InitializeComponent();
-            this.meal = meal;
-            _mainFrame = mainFrame;
-            _mealsPage = mp;
-            loadMealDetails();
-        }
-
-        public MealDetailsPage(Meal meal)
-        {
-            InitializeComponent();
-            this.meal = meal;
-            loadMealDetails();
-        }
-
+       
         private void loadMealDetails()
         {
             Uri mealUri = new Uri(meal.Image);
@@ -56,16 +37,9 @@ namespace AppSofExamenOpdracht.Pages
             }
         }
 
-        private async void btn_ReturnToRandom(object sender, RoutedEventArgs e)
+        private void btn_Return(object sender, RoutedEventArgs e)
         {
-            if (_randomPage != null)
-            {
-                _mainFrame.Navigate(_randomPage);
-            }
-            else if (_mealsPage != null)
-            {
-                _mainFrame.Navigate(_mealsPage);
-            }
+            _mainFrame.Navigate(_previousPage);
         }
     }
 }

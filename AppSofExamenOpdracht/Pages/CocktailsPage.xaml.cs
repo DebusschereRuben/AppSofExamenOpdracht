@@ -20,23 +20,24 @@ namespace AppSofExamenOpdracht.Pages
 
         private async void btn_search_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                lst_drinkList.Items.Clear();
-                string search = txt_input.Text.Trim().ToLower();
-                if (search != "")
-                {
-                    var drinks = await getDrinksAsync(search);
+            lst_drinkList.Items.Clear();
+            string search = txt_input.Text.Trim().ToLower();
 
+            if (search != "")
+            {
+                var drinks = await getDrinksAsync(search);
+
+                if (drinks.DrinksList != null)
+                {
                     foreach (var drink in drinks.DrinksList)
                     {
                         lst_drinkList.Items.Add(drink);
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Geen cocktails met deze naam gevonden, probeer iets anders");
+                else
+                {
+                    MessageBox.Show("Geen cocktails gevonden die overeenkomen met de zoekopdracht: " + search + ", probeer iets anders");
+                }
             }
         }
 
@@ -76,7 +77,8 @@ namespace AppSofExamenOpdracht.Pages
         }
         private async void btn_details_Click(object sender, RoutedEventArgs e)
         {
-            try
+
+            if (lst_drinkList.SelectedItem != null)
             {
                 HttpClient client = new();
 
@@ -91,10 +93,11 @@ namespace AppSofExamenOpdracht.Pages
 
                 _mainFrame.Navigate(new CocktailDetailsPage(cocktail, _mainFrame, this));
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Geen cocktail geselecteerd");
-            } 
+                MessageBox.Show("Nog geen cocktail geselecteerd");
+            }
+
         }
     }
 }

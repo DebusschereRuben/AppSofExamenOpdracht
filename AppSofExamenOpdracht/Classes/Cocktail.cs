@@ -15,7 +15,7 @@ namespace AppSofExamenOpdracht.Classes
         [JsonPropertyName("strGlass")]
         public string? Glass { get; set; }
 
-        public List<string> ingredients;
+        public List<string>? ingredients;
 
         [JsonPropertyName("strDrinkThumb")]
         public string? Image {  get; set; }        

@@ -32,24 +32,24 @@ namespace AppSofExamenOpdracht.Pages
 
         private async void btn_search_Click(object sender, RoutedEventArgs e)
         {
-            try
+            lst_mealList.Items.Clear();
+            string search = txt_input.Text.Trim().ToLower();
+
+            if (search != "")
             {
-                lst_mealList.Items.Clear();
-                string search = txt_input.Text.Trim().ToLower();
+                var meals = await getMealsAsync(search);
 
-                if (search != "")
+                if (meals.MealsList != null)
                 {
-                    var meals = await getMealsAsync(search);
-
                     foreach (var meal in meals.MealsList)
                     {
                         lst_mealList.Items.Add(meal);
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Geen meals met deze naam gevonden, probeer iets anders");
+                else
+                {
+                    MessageBox.Show("Geen meals gevonden die overeenkomen met de zoekopdracht: " + search + ", probeer iets anders");
+                }
             }
         }
 
@@ -66,7 +66,7 @@ namespace AppSofExamenOpdracht.Pages
 
         private async void btn_details_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if(lst_mealList.SelectedItem != null)
             {
                 HttpClient client = new();
 
@@ -81,7 +81,7 @@ namespace AppSofExamenOpdracht.Pages
 
                 _mainFrame.Navigate(new MealDetailsPage(meal, _mainFrame, this));//mainframe voor navigatie, this is state vd pagina
             }
-            catch (Exception ex)
+            else
             {
                 MessageBox.Show("Geen maaltijd geselcteerd");
             }
